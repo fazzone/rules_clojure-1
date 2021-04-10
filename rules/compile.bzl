@@ -13,7 +13,7 @@ def clojure_java_library_impl(ctx):
         set -e;
         rm -rf {classes}
         mkdir -p {classes}
-        {java} -cp {classpath} -Dclojure.compile.path={classes} -Dclojure.compile.jar={jar} clojure.main {script} {namespaces}
+        {java} -cp "{classpath}" -Dclojure.compile.path={classes} -Dclojure.compile.jar={jar} clojure.main {script} {namespaces}
     """.format(
         java = toolchain.java,
         classpath = ctx.configuration.host_path_separator.join([f.path for f in deps.to_list() + [classes]]),
